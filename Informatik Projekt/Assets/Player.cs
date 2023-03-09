@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private bool isgrounded = false;
 
     private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,16 @@ public class Player : MonoBehaviour
             anim.SetBool("IsRunning", false);
         }
         transform.Translate(Vector2.right * speed * richtung * Time.deltaTime);
+
+        if(isgrounded == false)
+        {
+            anim.SetBool("IsJumping", true);
+        }
+        else
+        {
+            anim.SetBool("IsJumping", false);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Space) && isgrounded)
         {
