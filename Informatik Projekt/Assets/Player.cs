@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
 
     private Animator anim;
 
+    public GameObject Kamera;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +52,8 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector2.up * jumph, ForceMode2D.Impulse);
             isgrounded = false;
         }
+
+        Kamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
