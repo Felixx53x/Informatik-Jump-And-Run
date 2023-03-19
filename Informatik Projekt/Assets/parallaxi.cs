@@ -27,7 +27,7 @@ public class parallaxi : MonoBehaviour
         backSpeed = new float[BackCount];
         backgrounds = new GameObject[BackCount];
 
-        for (int i = 0; i< BackCount; i++)
+        for (int i = 0; i < BackCount; i++)
         {
             backgrounds[i] = transform.GetChild(i).gameObject;
             mat[i] = backgrounds[i].GetComponent<Renderer>().material;
@@ -37,7 +37,7 @@ public class parallaxi : MonoBehaviour
     }
     void backSpeedCalculate(int BackCount)
     {
-        for (int i = 0; i< BackCount; i++)
+        for (int i = 0; i < BackCount; i++)
         {
             if ((backgrounds[i].transform.position.z - cam.position.z) > farthestBack)
             {
@@ -45,7 +45,7 @@ public class parallaxi : MonoBehaviour
             }
         }
 
-        for (int i = 0; i< BackCount; i++)
+        for (int i = 0; i < BackCount; i++)
         {
             backSpeed[i] = 1 - (backgrounds[i].transform.position.z - cam.position.z) / farthestBack;
         }
@@ -55,7 +55,7 @@ public class parallaxi : MonoBehaviour
         distance = cam.position.x - camStartPos.x;
         transform.position = new Vector3(cam.position.x, transform.position.y, 0);
 
-        for (int i = 0; i< backgrounds.Length; i++)
+        for (int i = 0; i < backgrounds.Length; i++)
         {
             float speed = backSpeed[i] * parallaxSpeed;
             mat[i].SetTextureOffset("_MainTex", new Vector2(distance, 0) * speed);
